@@ -1,16 +1,59 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {
+    APP_BASE_HREF,
+    HashLocationStrategy,
+    LocationStrategy,
+} from '@angular/common';
+
+import { FormsModule } from '@angular/forms';
+import { 
+    Headers,
+    Http,
+    HttpModule,
+    Response,
+    RequestOptions,
+} from '@angular/http';
+
+import {
+    Routes,
+    RouterModule,
+} from '@angular/router';
+
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { AboutComponent } from './about/about.component';
+import { ContactComponent } from './contact/contact.component';
+
+const routes: Routes = [
+    { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'home', component: HomeComponent },
+    { path: 'about', component: AboutComponent },
+    { path: 'contact', component: ContactComponent },
+//  { path: 'create-article', component: CreateArticleComponent },
+//  { path: 'article/:id', component: ShowArticleComponent },
+];
+
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        AboutComponent,
+        ContactComponent
+    ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        HttpModule,
+        RouterModule.forRoot(routes),    
+    ],
+    providers: [
+        { provide: LocationStrategy, useClass: HashLocationStrategy },
+        { provide: APP_BASE_HREF, useValue: '/' }
+    ],
+    bootstrap: [AppComponent]
 })
+
 export class AppModule { }
