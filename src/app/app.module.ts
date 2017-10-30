@@ -25,14 +25,18 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { ContactComponent } from './contact/contact.component';
+import { ArticlesComponent } from './articles/articles/articles.component';
+import { CreateArticleComponent } from './articles/create-article/create-article.component';
+import { GetArticleComponent } from './articles/get-article/get-article.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
-//  { path: 'create-article', component: CreateArticleComponent },
-//  { path: 'article/:id', component: ShowArticleComponent },
+    { path: 'articles', component: ArticlesComponent },
+    { path: 'create-article', component: CreateArticleComponent },
+    { path: 'article/:id', component: GetArticleComponent },
 ];
 
 
@@ -41,7 +45,10 @@ const routes: Routes = [
         AppComponent,
         HomeComponent,
         AboutComponent,
-        ContactComponent
+        ContactComponent,
+        ArticlesComponent,
+        CreateArticleComponent,
+        GetArticleComponent
     ],
     imports: [
         BrowserModule,

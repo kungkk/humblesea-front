@@ -1,0 +1,27 @@
+<table>
+  <caption>List of Articles</caption>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Action</th>
+  </tr>
+  
+  <tr *ngFor="let article of articles">
+    <td>
+        <a href="api/article/{{ article.id }}">{{ article.name }}</a>
+    </td>
+    <td>{{ article.description }}</td>
+    <td>
+        <a [routerLink]="['/article', article.id]">View</a>
+        |
+        Edit 
+        | 
+        <!--
+        <a (click)="deleteArticle()" href="api/article/{{ article.id }}">Delete</a>
+        <a (click)="deleteArticle(article.id)" [routerLink]="['/article', article.id]">Delete</a>
+        -->
+        
+        <a (click)="deleteArticle(article.id)" href="#">Delete</a>
+    </td>
+  </tr>
+</table>
