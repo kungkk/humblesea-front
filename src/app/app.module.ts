@@ -29,6 +29,12 @@ import { ArticlesComponent } from './articles/articles/articles.component';
 import { CreateArticleComponent } from './articles/create-article/create-article.component';
 import { GetArticleComponent } from './articles/get-article/get-article.component';
 
+
+// services
+import { AuthService } from './-services/auth.service';
+import { LoginComponent } from './login/login.component';
+import { ProtectedComponent } from './protected/protected.component';
+
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
@@ -37,6 +43,7 @@ const routes: Routes = [
     { path: 'articles', component: ArticlesComponent },
     { path: 'create-article', component: CreateArticleComponent },
     { path: 'article/:id', component: GetArticleComponent },
+    { path: 'login', component: LoginComponent },
 ];
 
 
@@ -48,7 +55,9 @@ const routes: Routes = [
         ContactComponent,
         ArticlesComponent,
         CreateArticleComponent,
-        GetArticleComponent
+        GetArticleComponent,
+        LoginComponent,
+        ProtectedComponent
     ],
     imports: [
         BrowserModule,
@@ -57,6 +66,7 @@ const routes: Routes = [
         RouterModule.forRoot(routes),    
     ],
     providers: [
+        AuthService,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         { provide: APP_BASE_HREF, useValue: '/' }
     ],

@@ -10,6 +10,7 @@ import {
 } from '@angular/http';
 import { Article } from '../../_models/article';
 
+// decorator
 @Component({
     selector: 'articles',
     templateUrl: './articles.component.html',
