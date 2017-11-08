@@ -1,0 +1,16 @@
+<table>
+  <caption>List of Site Articles</caption>
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Action</th>
+  </tr>
+  
+  <tr *ngFor="let article of articles">
+    <td>{{ article.title }}</td>
+    <td>{{ article.description }}</td>
+    <td>
+        <a [routerLink]="['/article', article.id]">View</a>
+    </td>
+  </tr>
+</table>

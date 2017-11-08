@@ -38,9 +38,12 @@ export class AuthService {
         this.http.post(this.endpoint, body, { headers: headers }).subscribe(res => {                                      
             this.results = res.json();
             console.dir(this.results['access_token']);
-            localStorage.setItem('username', user);
-            localStorage.setItem('access_token_password_grant', this.results['access_token']);
-            console.log("save access token into localStorage");
+            //localStorage.setItem('username', user);
+            //localStorage.setItem('access_token_password_grant', this.results['access_token']);
+            sessionStorage.setItem('username', user);
+            sessionStorage.setItem('access_token_password_grant', this.results['access_token']);
+            
+            console.log("save access token into sessionStorage");
             return true;
         });      
         
@@ -48,11 +51,13 @@ export class AuthService {
     }
 
     logout(): any {
-        localStorage.removeItem('username');
+        //localStorage.removeItem('username');
+        sessionStorage.removeItem('username');
     }
 
     getUser(): any {
-        return localStorage.getItem('username');
+        //return localStorage.getItem('username');
+        return sessionStorage.getItem('username');
     }
 
     isLoggedIn(): boolean {

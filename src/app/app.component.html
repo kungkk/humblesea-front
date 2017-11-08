@@ -8,23 +8,22 @@
     <a [routerLink]="['/home']">Home</a>
     <a [routerLink]="['/about']">About Us</a>
     <a [routerLink]="['/contact']">Contact Us</a>
-    |
-    <a [routerLink]="['/articles']">List Articles</a>
+    |--|
     <a [routerLink]="['/create-article']">Create Article</a>
+    <a [routerLink]="['/articles']">List Articles</a>
+    <a [routerLink]="['/site-articles']">Site Articles</a>
+    <a [routerLink]="['/my-articles']">My Articles</a>
+    
     |
-    <a [routerLink]="['/products']">Products</a>
     <a [routerLink]="['/login']">Login</a>
     <a [routerLink]="['/protected']">Protected</a>
     |
     <a [routerLink]="['/client_credentials']">Get Access Token using Client Credentials</a>
+    <!--
     <a [routerLink]="['/password_grant']">Get Access Token using Password Grant</a>
-    
+    -->
 </div>
 
 <div class="container">
     <router-outlet></router-outlet>
 </div>
-
-<!--
-<articles></articles>
--->

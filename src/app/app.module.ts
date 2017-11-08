@@ -40,12 +40,16 @@ import { PasswordGrantComponent } from './password-grant/password-grant.componen
 // might be got duplicated code with AuthService
 import { AUTH_PROVIDERS } from './-services/auth.service';
 import { LoggedInGuard } from './logged-in.guard';
+import { SiteArticlesComponent } from './articles/site-articles/site-articles.component';
+import { MyArticlesComponent } from './articles/my-articles/my-articles.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
+    { path: 'site-articles', component: SiteArticlesComponent },
+    { path: 'my-articles', component: MyArticlesComponent },
     { path: 'articles', component: ArticlesComponent },
     { path: 'create-article', component: CreateArticleComponent },
     { path: 'article/:id', component: GetArticleComponent },
@@ -68,7 +72,9 @@ const routes: Routes = [
         LoginComponent,
         ProtectedComponent,
         ClientCredentialsComponent,
-        PasswordGrantComponent
+        PasswordGrantComponent,
+        SiteArticlesComponent,
+        MyArticlesComponent
     ],
     imports: [
         BrowserModule,
