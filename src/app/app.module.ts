@@ -35,6 +35,7 @@ import { AuthService } from './-services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { ProtectedComponent } from './protected/protected.component';
 import { ClientCredentialsComponent } from './client-credentials/client-credentials.component';
+import { PasswordGrantComponent } from './password-grant/password-grant.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -46,6 +47,7 @@ const routes: Routes = [
     { path: 'article/:id', component: GetArticleComponent },
     { path: 'login', component: LoginComponent },
     { path: 'client_credentials', component: ClientCredentialsComponent },
+    { path: 'password_grant', component: PasswordGrantComponent },
 ];
 
 
@@ -60,7 +62,8 @@ const routes: Routes = [
         GetArticleComponent,
         LoginComponent,
         ProtectedComponent,
-        ClientCredentialsComponent
+        ClientCredentialsComponent,
+        PasswordGrantComponent
     ],
     imports: [
         BrowserModule,
