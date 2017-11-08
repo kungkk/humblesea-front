@@ -34,6 +34,7 @@ import { GetArticleComponent } from './articles/get-article/get-article.componen
 import { AuthService } from './-services/auth.service';
 import { LoginComponent } from './login/login.component';
 import { ProtectedComponent } from './protected/protected.component';
+import { ClientCredentialsComponent } from './client-credentials/client-credentials.component';
 
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -44,6 +45,7 @@ const routes: Routes = [
     { path: 'create-article', component: CreateArticleComponent },
     { path: 'article/:id', component: GetArticleComponent },
     { path: 'login', component: LoginComponent },
+    { path: 'client_credentials', component: ClientCredentialsComponent },
 ];
 
 
@@ -57,7 +59,8 @@ const routes: Routes = [
         CreateArticleComponent,
         GetArticleComponent,
         LoginComponent,
-        ProtectedComponent
+        ProtectedComponent,
+        ClientCredentialsComponent
     ],
     imports: [
         BrowserModule,
