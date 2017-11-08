@@ -24,6 +24,8 @@ export class ClientCredentialsComponent implements OnInit {
         this.http.post('http://localhost:8080/oauth/token', body, { headers: headers }).subscribe(res => {                                      
             this.results = res.json();
             console.dir(this.results['access_token']);
+            localStorage.setItem('access_token', this.results['access_token']);
+            console.log("save access token into localStorage");
         });      
     }
 

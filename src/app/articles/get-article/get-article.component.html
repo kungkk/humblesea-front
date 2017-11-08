@@ -1,8 +1,8 @@
 <form class="ui large form segment">
     <h3 class="ui header">Show Article</h3>
     <div class="field">
-        <label for="name">Name:</label>
-        <input name="name" #newname value="{{ article.name }}">
+        <label for="title">Title:</label>
+        <input name="title" #newtitle value="{{ article.title }}">
     </div>
     <div class="field">
         <label for="description">Description:</label>
@@ -11,5 +11,5 @@
     
     <div>{{ id }}</div>
     <!-- added this button -->
-    <button (click)="updateArticle(newname, newdescription)" class="ui positive right floated button">Submit Article</button>
+    <button (click)="updateArticle(newtitle, newdescription)" class="ui positive right floated button">Submit Article</button>
 </form>

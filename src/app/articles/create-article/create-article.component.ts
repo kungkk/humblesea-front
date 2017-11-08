@@ -7,6 +7,8 @@ import {
 import {Http, Response} from '@angular/http';
 import { Article } from '../../_models/article';
 
+import { environment } from '../../../environments/environment';
+
 @Component({
   selector: 'app-create-article',
   templateUrl: './create-article.component.html',
@@ -14,6 +16,8 @@ import { Article } from '../../_models/article';
 })
 export class CreateArticleComponent implements OnInit {
     @Input() article: Article;
+    endpoint: string = environment.api_url + '/article';
+   
 
     constructor(private http: Http) { 
     }
@@ -21,19 +25,14 @@ export class CreateArticleComponent implements OnInit {
     ngOnInit() {
     }
 
-    createArticle(name: HTMLInputElement, description: HTMLInputElement): void {
-        console.log(name.value);
-        
-        this.http.post(
-            'http://localhost:8000/api/article',
-            {
-                name: name.value,
-                description: description.value
+    createArticle(title: HTMLInputElement, description: HTMLInputElement): void {
+        this.http.post(this.endpoint,{ title: title.value,
+            description: description.value
         })
         .subscribe((res: Response) => {
             //this.data = res.json();
             console.dir(res);
-            name.value = '';
+            title.value = '';
             description.value = '';      
         });
     }      

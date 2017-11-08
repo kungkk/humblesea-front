@@ -5,10 +5,13 @@ import {
     HostBinding
 } from '@angular/core';
 import {
+    Headers,
     Http, 
     Response
 } from '@angular/http';
 import { Article } from '../../_models/article';
+
+import { environment } from '../../../environments/environment';
 
 // decorator
 @Component({
@@ -18,7 +21,8 @@ import { Article } from '../../_models/article';
 })
 
 export class ArticlesComponent implements OnInit {
-    endpoint: string = 'http://localhost:8000/api/article/';
+    //endpoint: string = 'http://localhost:8000/api/article/';
+    endpoint: string = environment.api_url + '/site-articles/';
     articles: Article[];
 
     constructor(private http: Http) { 
@@ -26,9 +30,16 @@ export class ArticlesComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.http.request('http://localhost:8000/api/articles')
+        //this.http.request('http://localhost:8080/api/articles')
+        
+        let headers = new Headers({'Authorization': 'Bearer ' + localStorage.getItem('access_token') });
+        //headers.append('Authorization', 'Bearer {{access_token}}'); 
+        
+        console.log("ngOnInit endpoint:" + this.endpoint);
+        this.http.request(this.endpoint, { headers: headers })        
             .subscribe((res: Response) => {
                 this.articles = res.json();
+                this.articles = res.json()['data'];
         });
     }
     
@@ -41,7 +52,8 @@ export class ArticlesComponent implements OnInit {
             console.dir(res.statusText);
 
             // reload the articles json            
-            this.http.request('http://localhost:8000/api/articles')
+            //this.http.request('http://localhost:8000/api/articles')
+            this.http.request(this.endpoint)            
                 .subscribe((res: Response) => {
                     this.articles = res.json();
             });

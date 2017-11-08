@@ -6,6 +6,7 @@ import {Http, Response} from '@angular/http';
 import { Article } from '../../_models/article';
 import { ActivatedRoute } from '@angular/router';
 
+import { environment } from '../../../environments/environment';
 
 @Component({
     selector: 'app-get-article',
@@ -14,7 +15,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class GetArticleComponent implements OnInit {
     id: string;
-    endpoint: string = 'http://localhost:8000/api/article/';
+    endpoint: string = environment.api_url + '/article/';
     article: Article;
 
     constructor(private http: Http, private route: ActivatedRoute) {
@@ -22,30 +23,23 @@ export class GetArticleComponent implements OnInit {
             this.id = params['id']; 
             console.log("constructor:" + this.id);
 
-            // 2017-10-30            
             this.http.request(this.endpoint + this.id)        
                 .subscribe((res: Response) => {
-                    this.article = res.json();
+                    //this.article = res.json();
+                    this.article = res.json()['data'];
             });
         });
     }
 
     ngOnInit() {
-        //this.http.request('http://localhost:8000/api/article/' + this.id)
-//        this.http.request(this.endpoint + this.id)        
-//            .subscribe((res: Response) => {
-//                console.log("ngOnInit");
-//                console.dir(res);
-//                this.article = res.json();
-//        });
+        
     }
     
     
-    updateArticle(name: HTMLInputElement, description: HTMLInputElement): void {
-        //this.http.put('http://localhost:8000/api/article/' + this.id,        
+    updateArticle(title: HTMLInputElement, description: HTMLInputElement): void {
         this.http.put(this.endpoint + this.id,                
             {
-                name: name.value,
+                title: title.value,
                 description: description.value
         })
         .subscribe((res: Response) => {

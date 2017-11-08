@@ -1,14 +1,14 @@
 <table>
   <caption>List of Articles</caption>
   <tr>
-    <th>Name</th>
+    <th>Title</th>
     <th>Description</th>
     <th>Action</th>
   </tr>
   
   <tr *ngFor="let article of articles">
     <td>
-        <a href="api/article/{{ article.id }}">{{ article.name }}</a>
+        <a href="api/article/{{ article.id }}">{{ article.title }}</a>
     </td>
     <td>{{ article.description }}</td>
     <td>

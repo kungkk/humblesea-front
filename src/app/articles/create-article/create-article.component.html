@@ -1,13 +1,13 @@
 <form class="ui large form segment">
     <h3 class="ui header">Create Article</h3>
     <div class="field">
-        <label for="name">Name:</label>
-        <input name="name" #newname> <!-- changed -->
+        <label for="title">Title:</label>
+        <input name="title" #newtitle> <!-- changed -->
     </div>
     <div class="field">
         <label for="description">Description:</label>
         <input name="description" #newdescription> <!-- changed -->
     </div>
     <!-- added this button -->
-    <button (click)="createArticle(newname, newdescription)" class="ui positive right floated button">Submit Article</button>
+    <button (click)="createArticle(newtitle, newdescription)" class="ui positive right floated button">Submit Article</button>
 </form>
