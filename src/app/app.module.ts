@@ -37,6 +37,10 @@ import { ProtectedComponent } from './protected/protected.component';
 import { ClientCredentialsComponent } from './client-credentials/client-credentials.component';
 import { PasswordGrantComponent } from './password-grant/password-grant.component';
 
+// might be got duplicated code with AuthService
+import { AUTH_PROVIDERS } from './-services/auth.service';
+import { LoggedInGuard } from './logged-in.guard';
+
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
@@ -48,6 +52,7 @@ const routes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'client_credentials', component: ClientCredentialsComponent },
     { path: 'password_grant', component: PasswordGrantComponent },
+    { path: 'protected', component: ProtectedComponent, canActivate: [ LoggedInGuard ] },
 ];
 
 
@@ -73,6 +78,8 @@ const routes: Routes = [
     ],
     providers: [
         AuthService,
+        AUTH_PROVIDERS,
+        LoggedInGuard,
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         { provide: APP_BASE_HREF, useValue: '/' }
     ],
