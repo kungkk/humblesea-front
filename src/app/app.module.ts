@@ -49,7 +49,7 @@ const routes: Routes = [
     { path: 'about', component: AboutComponent },
     { path: 'contact', component: ContactComponent },
     { path: 'site-articles', component: SiteArticlesComponent },
-    { path: 'my-articles', component: MyArticlesComponent },
+    { path: 'my-articles', component: MyArticlesComponent, canActivate: [ LoggedInGuard ] },
     { path: 'articles', component: ArticlesComponent },
     { path: 'create-article', component: CreateArticleComponent },
     { path: 'article/:id', component: GetArticleComponent },
@@ -58,6 +58,7 @@ const routes: Routes = [
     { path: 'password_grant', component: PasswordGrantComponent },
     { path: 'protected', component: ProtectedComponent, canActivate: [ LoggedInGuard ] },
 ];
+
 
 
 @NgModule({
